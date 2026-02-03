@@ -1,20 +1,21 @@
-import React from "react";
+import { useState } from "react";
 
 function Exercicio1() {
+  const [status, setStatus] = useState("Aguardando entrega...");
+
   function atualizarStatus() {
-    {
-      let etiqueta = document.getElementById("status-entrega");
-      etiqueta.innerHTML = "Pedido entregue";
-      etiqueta.style.color = "green";
-    }
+    setStatus("Pedido entregue");
   }
 
   return (
     <div style={{ padding: "20px", border: "1px solid #ccc" }}>
       <h2>Controle de Entregas</h2>
-      <p id="status-entrega">Aguardando entrega...</p>
 
-      <button onClick={Exercicio1}>Atualizar Status</button>
+      <p style={{ color: status === "Pedido entregue" ? "green" : "black" }}>
+        {status}
+      </p>
+
+      <button onClick={atualizarStatus}>Atualizar Status</button>
     </div>
   );
 }
